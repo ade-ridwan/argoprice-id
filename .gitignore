@@ -1,0 +1,20 @@
+# --- Backend (Flask) ---
+api/venv/
+api/__pycache__/
+api/*.py[cod]
+api/.env
+
+# --- Frontend (Node/React/Nuxt) ---
+web/node_modules/
+web/.next/
+web/.nuxt/
+web/dist/
+web/.env
+web/.vercel
+
+# --- System & IDE ---
+.vscode/
+.idea/
+.DS_Store
+*.log
+node_modules/

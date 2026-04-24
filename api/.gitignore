@@ -1,0 +1,30 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+env/
+.venv/
+ENV/
+
+# --- Environment Variables ---
+.env
+.flaskenv
+
+# --- Database ---
+*.db
+*.sqlite3
+instance/
+
+# --- IDE / Editor ---
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# --- Flask / Log ---
+*.log
+.pytest_cache/
+htmlcov/
+.coverage

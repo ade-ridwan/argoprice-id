@@ -1,0 +1,11 @@
+{
+  "name": "agro-price",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run dev --workspace=web\" \"cd apps/api && python run.py\"",
+    "install-all": "npm install && cd apps/api && pip install -r requirements.txt"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.0"
+  }
+}
