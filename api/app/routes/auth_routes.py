@@ -19,7 +19,7 @@ def register():
     new_user = User(
         username=data['username'],
         email=data['email'],
-        role=data.get('role', 'user')
+        # role=data.get('role', 'user')
     )
     new_user.set_password(data['password'])
 

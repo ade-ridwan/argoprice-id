@@ -13,10 +13,12 @@ def create_app():
     app.config.from_object(Config)
 
     # Init Extensions
-    CORS(app)
     db.init_app(app)
     ma.init_app(app)
     register_error_handlers(app)
+
+
+    CORS(app, resources={r"/api/*": {"origins": "*"}})
 
     # Register Blueprints
     from app.routes.auth_routes import auth_bp # Import auth
