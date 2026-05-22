@@ -28,7 +28,7 @@ const navItems = [
   { name: 'Home', path: '/' },
   { name: 'Products', path: '/products' },
   { name: 'Graphs', path: '/graph' },
-  { name: 'Predictions', path: '#' },
+  { name: 'Predictions', path: '/predictions' },
 ];
 </script>
 

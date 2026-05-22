@@ -11,13 +11,13 @@ const props = defineProps<Props>();
 const maxVal = Math.max(...props.chartData);
 const getHeights = () => props.chartData.map(val => (val / maxVal) * 100);
 
-const days = ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'];
+const days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 </script>
 
 <template>
   <div class="bg-white dark:bg-zinc-900 rounded-2xl p-6 shadow-lg h-full flex flex-col">
     <div class="mb-4">
-      <div class="text-sm text-gray-500 dark:text-zinc-400 font-medium mb-1">Harga per kg</div>
+      <div class="text-sm text-gray-500 dark:text-zinc-400 font-medium mb-1">Price per kg</div>
       <div class="text-3xl font-bold text-[#1A7B44] dark:text-[#22A05B] flex items-baseline gap-2">
         {{ price }}
         <span class="text-sm font-semibold flex items-center" :class="isPositive ? 'text-orange-500' : 'text-[#1A7B44]'">
@@ -25,7 +25,7 @@ const days = ['Sen', 'Sel', 'Rab', 'Kam', 'Jum', 'Sab', 'Min'];
           {{ trendPercentage }}
         </span>
       </div>
-      <div class="text-xs text-gray-400 dark:text-zinc-500 mt-2 font-medium">Tren Harga 7 Hari Terakhir</div>
+      <div class="text-xs text-gray-400 dark:text-zinc-500 mt-2 font-medium">Price Trend Last 7 Days</div>
     </div>
 
     <!-- Custom CSS Bar Chart -->

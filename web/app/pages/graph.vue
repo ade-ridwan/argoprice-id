@@ -18,49 +18,49 @@ const commodityImages = ref([
   '/products/chili3.png'  // pile
 ]);
 
-const commodityDescription = ref("Cabai merah segar berkualitas premium yang dipanen pada umur optimal sehingga menghasilkan rasa pedas yang kuat. Harga mulai dari Rp 125.000/kg, cocok untuk kebutuhan rumah tangga maupun usaha kuliner.");
+const commodityDescription = ref("Premium quality fresh red chilies harvested at the optimal age to produce a strong spicy flavor. Prices start from Rp 125.000/kg, suitable for both household needs and culinary businesses.");
 
 const dummyChartData = ref([45, 60, 40, 75, 55, 80, 100]); // Fake heights for the bar chart
 
 const similarProducts = ref<Product[]>([
   {
     id: 101,
-    title: 'Cabai Merah Besar',
+    title: 'Large Red Chili',
     price: 'Rp 124.000',
     unit: 'kg',
     rating: 4.8,
     location: '1.2 km',
-    category: 'Sayuran',
+    category: 'Vegetables',
     image: 'https://images.unsplash.com/photo-1596649303534-118e6cb0f455?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 102,
-    title: 'Cabai Merah Fresh',
+    title: 'Fresh Red Chili',
     price: 'Rp 127.000',
     unit: 'kg',
     rating: 4.9,
     location: '2.5 km',
-    category: 'Sayuran',
+    category: 'Vegetables',
     image: 'https://images.unsplash.com/photo-1588165171080-c89acfa5ee83?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 103,
-    title: 'Cabai Merah',
+    title: 'Red Chili',
     price: 'Rp 126.000',
     unit: 'kg',
     rating: 4.7,
     location: '3.1 km',
-    category: 'Sayuran',
+    category: 'Vegetables',
     image: 'https://images.unsplash.com/photo-1596649283437-6d6da84d62ea?q=80&w=800&auto=format&fit=crop'
   },
   {
     id: 104,
-    title: 'Cabai Merah Besar Segar',
+    title: 'Fresh Large Red Chili',
     price: 'Rp 125.500',
     unit: 'kg',
     rating: 5.0,
     location: '4.8 km',
-    category: 'Sayuran',
+    category: 'Vegetables',
     image: 'https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?q=80&w=800&auto=format&fit=crop'
   }
 ]);
@@ -78,11 +78,11 @@ const similarProducts = ref<Product[]>([
         <nav class="text-sm text-white/80 flex items-center gap-2 mb-8">
           <NuxtLink to="/" class="hover:text-white transition-colors">Home</NuxtLink>
           <Icon name="lucide:chevron-right" class="w-3.5 h-3.5" />
-          <span class="hover:text-white transition-colors cursor-pointer">Grafik</span>
+          <span class="hover:text-white transition-colors cursor-pointer">Charts</span>
           <Icon name="lucide:chevron-right" class="w-3.5 h-3.5" />
-          <span class="hover:text-white transition-colors cursor-pointer">Sayuran</span>
+          <span class="hover:text-white transition-colors cursor-pointer">Vegetables</span>
           <Icon name="lucide:chevron-right" class="w-3.5 h-3.5" />
-          <span class="text-white font-medium">Cabai Merah</span>
+          <span class="text-white font-medium">Red Chili</span>
         </nav>
 
         <!-- Main Content Split -->
@@ -120,9 +120,9 @@ const similarProducts = ref<Product[]>([
     <!-- Similar Products Grid -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
       <div class="flex items-center justify-between mb-8">
-        <h2 class="text-2xl font-bold text-gray-900 dark:text-zinc-100">Produk Serupa di Wilayah ini</h2>
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-zinc-100">Similar Products in This Area</h2>
         <NuxtLink to="/products" class="text-sm text-[#1A7B44] hover:text-[#156638] font-medium flex items-center gap-1 transition-colors">
-          Lihat Semua <Icon name="lucide:arrow-right" class="w-4 h-4" />
+          See All <Icon name="lucide:arrow-right" class="w-4 h-4" />
         </NuxtLink>
       </div>
 

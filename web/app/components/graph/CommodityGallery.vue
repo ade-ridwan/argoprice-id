@@ -51,7 +51,7 @@ const goToImage = (index: number) => {
 
     <!-- Description -->
     <div class="mt-4">
-      <h3 class="font-bold mb-2">Deskripsi Produk</h3>
+      <h3 class="font-bold mb-2">Product Description</h3>
       <p class="text-sm text-white/80 leading-relaxed">
         {{ description }}
       </p>
