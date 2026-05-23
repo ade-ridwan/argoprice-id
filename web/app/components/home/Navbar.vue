@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue';
 
 const isDark = ref(false)
+const isMobileMenuOpen = ref(false) // State untuk mengontrol menu mobile
 
 onMounted(() => {
     if (localStorage.getItem('theme') === 'dark') {
@@ -24,6 +25,16 @@ const toggleDark = () => {
     }
 }
 
+// Fungsi untuk toggle menu mobile
+const toggleMobileMenu = () => {
+    isMobileMenuOpen.value = !isMobileMenuOpen.value;
+}
+
+// Otomatis menutup menu mobile saat link diklik
+const closeMobileMenu = () => {
+    isMobileMenuOpen.value = false;
+}
+
 const navItems = [
   { name: 'Home', path: '/' },
   { name: 'Products', path: '/products' },
@@ -38,7 +49,7 @@ const navItems = [
       <div class="flex justify-between items-center h-16">
         <!-- Logo -->
         <div class="flex-shrink-0 flex items-center">
-          <NuxtLink to="/" class="flex items-center gap-2">
+          <NuxtLink to="/" class="flex items-center gap-2" @click="closeMobileMenu">
             <AppLogo />
           </NuxtLink>
         </div>
@@ -56,7 +67,7 @@ const navItems = [
           </NuxtLink>
         </div>
 
-        <!-- Auth Buttons -->
+        <!-- Desktop Auth Buttons -->
         <div class="hidden md:flex items-center space-x-4">
           <!-- Dark Mode Toggle -->
           <button
@@ -79,17 +90,61 @@ const navItems = [
           </NuxtLink>
         </div>
 
-        <!-- Mobile Menu Button (Hamburger) -->
-        <div class="flex items-center gap-3 md:hidden">
+        <!-- Mobile Action Buttons (Dark Mode & Hamburger) -->
+        <div class="flex items-center gap-2 md:hidden">
           <button
             class="p-2 rounded-full bg-gray-100 dark:bg-zinc-800 text-gray-600 dark:text-zinc-300 hover:bg-gray-200 dark:hover:bg-zinc-700 transition-colors focus:outline-none"
             @click="toggleDark()">
             <Icon :name="isDark ? 'lucide:moon' : 'lucide:sun'" class="h-5 w-5" />
           </button>
-          <button type="button" class="text-gray-500 hover:text-gray-700 focus:outline-none">
-            <Icon name="lucide:menu" class="h-6 w-6" />
+          
+          <!-- Hamburger Button Toggle -->
+          <button 
+            type="button" 
+            class="p-2 rounded-md text-gray-500 dark:text-zinc-400 hover:text-gray-700 dark:hover:text-zinc-200 hover:bg-gray-100 dark:hover:bg-zinc-800 focus:outline-none"
+            @click="toggleMobileMenu"
+          >
+            <!-- Berganti icon X ketika menu terbuka -->
+            <Icon :name="isMobileMenuOpen ? 'lucide:x' : 'lucide:menu'" class="h-6 w-6" />
           </button>
         </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Panel -->
+    <div 
+      v-show="isMobileMenuOpen" 
+      class="md:hidden border-b border-gray-200 dark:border-zinc-800 bg-white dark:bg-zinc-950"
+    >
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <NuxtLink
+          v-for="item in navItems"
+          :key="item.name"
+          :to="item.path"
+          class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 dark:text-zinc-300 hover:text-[#1A7B44] dark:hover:text-[#1A7B44] hover:bg-gray-50 dark:hover:bg-zinc-900 transition-colors"
+          active-class="text-[#1A7B44] dark:text-[#1A7B44] bg-green-50/50 dark:bg-green-950/20"
+          @click="closeMobileMenu"
+        >
+          {{ item.name }}
+        </NuxtLink>
+      </div>
+      
+      <!-- Mobile Auth Buttons Section -->
+      <div class="pt-4 pb-4 border-t border-gray-100 dark:border-zinc-800 px-5 flex flex-col gap-3">
+        <NuxtLink 
+          to="/login" 
+          class="w-full text-center py-2 text-sm font-semibold text-gray-700 dark:text-zinc-300 hover:text-[#1A7B44] transition-colors"
+          @click="closeMobileMenu"
+        >
+          Login
+        </NuxtLink>
+        <NuxtLink 
+          to="/register" 
+          class="w-full text-center bg-[#1A7B44] hover:bg-[#156638] text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors shadow-sm"
+          @click="closeMobileMenu"
+        >
+          Register
+        </NuxtLink>
       </div>
     </div>
   </nav>
