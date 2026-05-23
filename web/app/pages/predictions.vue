@@ -9,8 +9,8 @@ definePageMeta({
 
 // Base historical data (in thousands: 110k, 115k, etc.)
 const historicalData = [110, 115, 120, 125]; 
-const labelsHistorical = ['Week -3', 'Week -2', 'Week -1', 'Current'];
-const labelsPredicted = ['Week +1', 'Week +2', 'Week +3', 'Week +4'];
+const labelsHistorical = ['Wk -3', 'Wk -2', 'Wk -1', 'Current']; // Dipersingkat agar tidak bertabrakan di mobile
+const labelsPredicted = ['Wk +1', 'Wk +2', 'Wk +3', 'Wk +4'];
 
 // Interactive Factors (using Number explicitly to avoid string concatenation)
 const weatherFactor = ref<number>(0); // -10 (Perfect) to +30 (Extreme Weather)
@@ -195,7 +195,7 @@ const resetSimulation = () => {
         </div>
 
         <!-- Right: Chart -->
-        <div class="w-full lg:w-8/12 bg-white dark:bg-zinc-900 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-zinc-800 flex flex-col min-h-[500px]">
+        <div class="w-full lg:w-8/12 bg-white dark:bg-zinc-900 rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-zinc-800 flex flex-col min-h-[450px] sm:min-h-[500px]">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
             <div>
               <h2 class="text-xl font-bold text-gray-900 dark:text-zinc-100">8-Week Price Trajectory</h2>
@@ -203,7 +203,7 @@ const resetSimulation = () => {
             </div>
             
             <!-- Legend -->
-            <div class="flex items-center gap-4 text-xs sm:text-sm bg-gray-50 dark:bg-zinc-800/50 p-2 px-4 rounded-full border border-gray-100 dark:border-zinc-700">
+            <div class="flex items-center gap-4 text-xs sm:text-sm bg-gray-50 dark:bg-zinc-800/50 p-2 px-4 rounded-full border border-gray-100 dark:border-zinc-700 self-start sm:self-auto">
               <div class="flex items-center gap-2">
                 <div class="w-3 h-3 rounded-full bg-gray-300 dark:bg-zinc-600"></div>
                 <span class="text-gray-600 dark:text-zinc-300 font-medium">Historical</span>
@@ -222,15 +222,15 @@ const resetSimulation = () => {
               <div v-for="i in 6" :key="i" class="w-full h-px border-t border-dashed border-gray-200 dark:border-zinc-800/80"></div>
             </div>
 
-            <!-- Bars container -->
-            <div class="flex-1 relative flex items-end justify-between gap-2 sm:gap-4 z-10 pb-10">
+            <!-- PERBAIKAN UTAMA: Ditambahkan class h-64 sm:h-full agar kontainer memiliki tinggi di mobile -->
+            <div class="w-full h-64 sm:h-full relative flex items-end justify-between gap-2 sm:gap-4 z-10 pb-10 mt-auto">
               <div 
                 v-for="(height, idx) in getHeights" 
                 :key="idx"
                 class="group w-full h-full flex flex-col justify-end items-center relative cursor-pointer"
               >
                 <!-- Tooltip -->
-                <div class="absolute -top-10 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-xs font-bold px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-md z-20">
+                <div class="absolute -top-10 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-[10px] sm:text-xs font-bold px-2 sm:px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-md z-20">
                   Rp {{ allChartData[idx] }}.000
                   <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900 dark:bg-white rotate-45"></div>
                 </div>
@@ -249,14 +249,14 @@ const resetSimulation = () => {
                 </div>
                 
                 <!-- X-Axis Label -->
-                <div class="text-[10px] sm:text-xs mt-3 absolute -bottom-8 whitespace-nowrap" :class="idx < 4 ? 'text-gray-500 dark:text-zinc-500 font-medium' : 'text-[#1A7B44] font-bold'">
+                <div class="text-[9px] sm:text-xs mt-3 absolute -bottom-8 whitespace-nowrap tracking-tight" :class="idx < 4 ? 'text-gray-500 dark:text-zinc-500 font-medium' : 'text-[#1A7B44] font-bold'">
                   {{ idx < 4 ? labelsHistorical[idx] : labelsPredicted[idx - 4] }}
                 </div>
               </div>
 
               <!-- Separation Line between Past and Future -->
               <div class="absolute top-0 bottom-10 border-l-2 border-dashed border-orange-400 dark:border-orange-500/70 z-0 flex items-start -ml-px" style="left: 50%;">
-                <div class="bg-orange-100 text-orange-700 dark:bg-orange-500/20 dark:text-orange-400 text-[10px] font-bold px-3 py-1 rounded-full -translate-x-1/2 -mt-4 shadow-sm border border-orange-200 dark:border-orange-500/30">
+                <div class="bg-orange-100 text-orange-700 dark:bg-orange-500/20 dark:text-orange-400 text-[9px] sm:text-[10px] font-bold px-2 sm:px-3 py-1 rounded-full -translate-x-1/2 -mt-4 shadow-sm border border-orange-200 dark:border-orange-500/30 whitespace-nowrap">
                   TODAY
                 </div>
               </div>
